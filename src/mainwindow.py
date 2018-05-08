@@ -259,7 +259,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """Trigger the About dialog."""
         QMessageBox.about(self, "About", "<a href='https://github.com/miniCruz"
                           "er/disease-tracking'>Disease Tracking</a>, v{} <br>"
-                          "Copyright &copy; 2018 Samuel Hoffman <br><br>"
-                          "Distributed under the "
+                          "Copyright &copy; 2018 Samuel Hoffman<br>"
+                          "Distributed under the GNU GPLv3 License<br><br> "
                           'Written with <font color="red">❤</font>'
                           " for Hadi Faour".format(__version__))
