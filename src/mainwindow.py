@@ -240,6 +240,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 break
 
             self.model.setRecord(row, rec)
+            self.commit_changes()
+
 
     def decrement_selected(self):
         """Decrement the 'pcount' column of the selected row(s)."""
@@ -254,6 +256,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                                      "Must be an integer.")
                 break
             self.model.setRecord(row, rec)
+            self.commit_changes()
 
     def about_dialog(self):
         """Trigger the About dialog."""
