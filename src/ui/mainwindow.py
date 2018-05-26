@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui\mainwindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.9.1
+# Created by: PyQt5 UI code generator 5.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -69,7 +69,10 @@ class Ui_MainWindow(object):
         self.actionAbout.setObjectName("actionAbout")
         self.actionLicense = QtWidgets.QAction(MainWindow)
         self.actionLicense.setObjectName("actionLicense")
+        self.actionExport = QtWidgets.QAction(MainWindow)
+        self.actionExport.setObjectName("actionExport")
         self.menuFile.addAction(self.actionImport)
+        self.menuFile.addAction(self.actionExport)
         self.menuHelp.addAction(self.actionAbout)
         self.menuHelp.addAction(self.actionLicense)
         self.menubar.addAction(self.menuFile.menuAction())
@@ -93,6 +96,7 @@ class Ui_MainWindow(object):
         self.actionImport.setText(_translate("MainWindow", "Import"))
         self.actionAbout.setText(_translate("MainWindow", "About"))
         self.actionLicense.setText(_translate("MainWindow", "License"))
+        self.actionExport.setText(_translate("MainWindow", "Export"))
 
 import resources_rc
 

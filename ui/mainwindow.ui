@@ -101,6 +101,7 @@
      <string>File</string>
     </property>
     <addaction name="actionImport"/>
+    <addaction name="actionExport"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -126,6 +127,11 @@
   <action name="actionLicense">
    <property name="text">
     <string>License</string>
+   </property>
+  </action>
+  <action name="actionExport">
+   <property name="text">
+    <string>Export</string>
    </property>
   </action>
  </widget>

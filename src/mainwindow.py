@@ -44,6 +44,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.table.setModel(self.model)
         self.table.setSelectionBehavior(QAbstractItemView.SelectRows)
         self.actionImport.triggered.connect(self.import_csv)
+        self.actionExport.triggered.connect(self.exoprt_csv)
         self.filterEdit.textEdited.connect(self.filter_rows)
         self.actionAbout.triggered.connect(self.about_dialog)
         self.addBtn.clicked.connect(self.insert_record)
@@ -147,6 +148,49 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.model.select()
         self.table.resizeColumnsToContents()
+
+    def exoprt_csv(self):
+        """Export database to CSV format."""
+
+        name = QFileDialog.getSaveFileName(self, "Export CSV", "",
+                                           "Comma Separated Values (*.csv);;"
+                                           "All Files (*.*)")
+        if not name[0]:
+            return
+
+        filename = name[0]
+
+        with open(filename, "w", newline="") as csvfile:
+
+            writer = csv.writer(csvfile, dialect="excel")
+            row_count = self.model.rowCount()
+
+            progress = QProgressDialog("Exporting data ...", "Abort", 0,
+                                       row_count, self)
+            progress.setWindowTitle("Data Emport Progress")
+            progress.setWindowModality(Qt.WindowModal)
+
+            for row in range(row_count):
+
+                if progress.wasCanceled():
+                    break
+
+                record = self.model.record(row)
+
+                code = record.value(1)
+                name = record.value(2)
+                pcount = record.value(3)
+
+                print(code, name, pcount)
+
+                writer.writerow([code, name, pcount])
+
+                progress.setValue(row)
+
+            progress.setValue(row_count)
+
+        self.statusBar().showMessage("Export complete", 1500)
+
 
     def filter_rows(self, text):
         """Loop through all rows, and see if "text" matches the row name."""
